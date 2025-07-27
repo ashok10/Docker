@@ -4,7 +4,7 @@ WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
-FROM gcr.io/distroless/java17
+FROM openjdk:17-jre-slim
 WORKDIR /app
 COPY --from=build /app/target/*.jar bankapp.jar
 EXPOSE 8080
